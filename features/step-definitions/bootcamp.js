@@ -1,17 +1,15 @@
 const { Given, When, Then } = require("@wdio/cucumber-framework");
 
 Given("I am on the home page", async () => {
-    await browser.url("https://www.newegg.com");
+    await browser.url("https://www.newegg.com/");
 });
 
 Given("I close the promo banner if it appears", async () => {
-    const banner = await $('//*[@id="modal-Website"]/div[2]/div/div/a/img');
+    const banner = await $('[class="modal-Website-img"]');
     const closeButton = await $('//*[@id="modal-Website"]/div[2]/div/button');
     try {
-        browser.waitForDisaplyed(10000);
-        if (banner.isDisplayed()) {
-            closeButton.click();
-        }
+        await banner.waitForDisplayed(2000);
+        return closeButton.click();
     } catch (error) {
         console.log('Banner is not displayed.')
     }
@@ -19,9 +17,7 @@ Given("I close the promo banner if it appears", async () => {
 
 //Search bar scenario
 When("I enter the word {string} in the search bar", async (searchWord) => {
-    const searchButton = await $('//*[@id="app"]/header/div[1]/div[1]/div[1]/div[4]/form/div');
     const searchBar = await $('[type="search"]');
-    await searchButton.click();
     await searchBar.setValue(`${searchWord}`);
 });
 
@@ -36,8 +32,8 @@ Then("I see that at least one item appears", async () => {
 });
 
 //Logo scenario
-When("I open {string} tab", async (keyPhrase) => {
-    const button = await $(`.font-s=${keyPhrase}`);
+When("I open Today's Best Deals tab", async () => {
+    const button = await $('//*[@id="trendingBanner_720202"]/span');
     await button.click();
 });
 
@@ -47,5 +43,5 @@ When("Click on the Internet shop logo", async () => {
 });
 
 Then("Main page opens", async () => {
-    await browser.url("https://www.newegg.com");
+    await expect(browser).toHaveUrl("https://www.newegg.com/");
 });
