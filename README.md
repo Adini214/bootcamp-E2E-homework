@@ -10,6 +10,7 @@ Check if you have all the files from list below:
 
 Check if `package.json` contains dependencies:
 ```text
+        "@cucumber/cucumber": "^8.9.0",
         "@wdio/allure-reporter": "^7.26.0",
         "@wdio/cli": "^7.27.0",
         "@wdio/cucumber-framework": "^7.27.0",

@@ -6,9 +6,9 @@ Given("I am on the home page", async () => {
 
 Given("I close the promo banner if it appears", async () => {
     const banner = await $('[class="modal-Website-img"]');
-    const closeButton = await $('//*[@id="modal-Website"]/div[2]/div/button');
+    const closeButton = await $('[class="close"]');
     try {
-        await banner.waitForDisplayed(2000);
+        await banner.waitForDisplayed({ timeout: 5000, reverse: false });
         return closeButton.click();
     } catch (error) {
         console.log('Banner is not displayed.')
@@ -21,24 +21,24 @@ When("I enter the word {string} in the search bar", async (searchWord) => {
     await searchBar.setValue(`${searchWord}`);
 });
 
-When("Click the search button", async () => {
-    const searchButton = await $('//*[@id="app"]/header/div[1]/div[1]/div[1]/div[5]/form/div/div[2]/button');
+When("I click the search button", async () => {
+    const searchButton = await $('[class="ico ico-search"]');
     await searchButton.click();
 });
 
 Then("I see that at least one item appears", async () => {
-    const list = await $('//*[@id="app"]/div[3]/section/div/div/div[2]/div/div/div/div[2]/div[1]/div[2]/div[2]');
-    await expect(list).toHaveElementClassContaining('item-cell');
+    const item = await $('[class="item-cell"]')
+    await expect(item).toBeDisplayed();
 });
 
 //Logo scenario
 When("I open Today's Best Deals tab", async () => {
-    const button = await $('//*[@id="trendingBanner_720202"]/span');
+    const button = await $(`.font-s=Today's Best Deals`);
     await button.click();
 });
 
-When("Click on the Internet shop logo", async () => {
-    const button = await $('//*[@id="app"]/header/div[1]/div[1]/div[1]/div[2]/a/img');
+When("I click on the Internet shop logo", async () => {
+    const button = await $('[alt="Newegg"]');
     await button.click();
 });
 
