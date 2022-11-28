@@ -1,10 +1,11 @@
 {
     "name": "bootcamp_e2e_homework",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "E2E homework for Evolution Bootcamp",
     "author": "Adrian Gawroński",
     "license": "MIT",
     "devDependencies": {
+        "@cucumber/cucumber": "^8.9.0",
         "@wdio/allure-reporter": "^7.26.0",
         "@wdio/cli": "^7.27.0",
         "@wdio/cucumber-framework": "^7.27.0",
@@ -16,6 +17,7 @@
     },
     "scripts": {
         "test": "wdio run wdio.conf.js",
-        "testWip": "wdio run wdio.conf.js --cucumberOpts.tagExpression @wip"
+        "testWip": "wdio run wdio.conf.js --cucumberOpts.tagExpression @wip",
+        "testFinished": "wdio run wdio.conf.js --cucumberOpts.tagExpression @finished"
     }
 }
