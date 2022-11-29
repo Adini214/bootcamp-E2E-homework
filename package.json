@@ -1,6 +1,6 @@
 {
     "name": "bootcamp_e2e_homework",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "E2E homework for Evolution Bootcamp",
     "author": "Adrian Gawroński",
     "license": "MIT",
@@ -16,8 +16,6 @@
         "wdio-chromedriver-service": "^8.0.0"
     },
     "scripts": {
-        "test": "wdio run wdio.conf.js",
-        "testWip": "wdio run wdio.conf.js --cucumberOpts.tagExpression @wip",
-        "testFinished": "wdio run wdio.conf.js --cucumberOpts.tagExpression @finished"
+        "test": "wdio run wdio.conf.js"
     }
 }
