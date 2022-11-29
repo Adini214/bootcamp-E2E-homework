@@ -1,16 +1,20 @@
 Feature: Bootcamp E2E
 
     Background:
-        Given I am on the home page
-        * I close the promo banner if it appears
-    @finished
-    Scenario: Finding articles on the website
-        When I enter the word "Windows" in the search bar
-        * I click the search button
-        Then I see that at least one item appears
+        Given the User is on the home page
+        When the User closes the promo banner if it appears
 
-    @finished
-    Scenario: Functionality of Logo button
-        When I open Today's Best Deals tab
-        * I click on the Internet shop logo
-        Then Main page opens
+    Scenario Outline: User can search for articles on the website
+        When the User enters the word "<product>" in the search bar
+        * the User clicks the search button
+        Then the User should see at least one item on the list
+        Examples:
+            | product  |
+            | Windows  |
+            | Mouse    |
+
+
+    Scenario: Logo button forwards the User to the main page
+        When the User opens Today's Best Deals tab
+        * the User clicks on the Internet shop logo
+        Then the User should see the main page

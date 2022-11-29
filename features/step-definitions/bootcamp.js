@@ -1,10 +1,10 @@
 const { Given, When, Then } = require("@wdio/cucumber-framework");
 
-Given("I am on the home page", async () => {
+Given("the User is on the home page", async () => {
     await browser.url("https://www.newegg.com/");
 });
 
-Given("I close the promo banner if it appears", async () => {
+When("the User closes the promo banner if it appears", async () => {
     const banner = await $('[class="modal-Website-img"]');
     const closeButton = await $('[class="close"]');
     try {
@@ -16,32 +16,32 @@ Given("I close the promo banner if it appears", async () => {
 });
 
 //Search bar scenario
-When("I enter the word {string} in the search bar", async (searchWord) => {
+When("the User enters the word {string} in the search bar", async (searchWord) => {
     const searchBar = await $('[type="search"]');
     await searchBar.setValue(`${searchWord}`);
 });
 
-When("I click the search button", async () => {
+When("the User clicks the search button", async () => {
     const searchButton = await $('[class="ico ico-search"]');
     await searchButton.click();
 });
 
-Then("I see that at least one item appears", async () => {
+Then("the User should see at least one item on the list", async () => {
     const item = await $('[class="item-cell"]')
     await expect(item).toBeDisplayed();
 });
 
 //Logo scenario
-When("I open Today's Best Deals tab", async () => {
+When("the User opens Today's Best Deals tab", async () => {
     const button = await $(`.font-s=Today's Best Deals`);
     await button.click();
 });
 
-When("I click on the Internet shop logo", async () => {
+When("the User clicks on the Internet shop logo", async () => {
     const button = await $('[alt="Newegg"]');
     await button.click();
 });
 
-Then("Main page opens", async () => {
+Then("the User should see the main page", async () => {
     await expect(browser).toHaveUrl("https://www.newegg.com/");
 });
