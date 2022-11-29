@@ -16,5 +16,5 @@ Feature: Bootcamp E2E
 
     Scenario: Logo button forwards the User to the main page
         When User opens Today's Best Deals tab
-        * the clicks on the Internet shop logo
+        * User clicks on the Internet shop logo
         Then User should see the main page
