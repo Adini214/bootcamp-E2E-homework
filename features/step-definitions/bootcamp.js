@@ -7,8 +7,9 @@ Given("User is on the home page", async () => {
 When("User closes the promo banner if it appears", async () => {
     const banner = await $('[class="modal-Website-img"]');
     const closeButton = await $('[class="close"]');
+    const timer = 20000
     try {
-        await banner.waitForDisplayed({ timeout: undefined, reverse: false });
+        await banner.waitForDisplayed({ timeout: timer });
         return closeButton.click();
     } catch (error) {
         console.log('Banner is not displayed.')
